@@ -1,4 +1,4 @@
-/* eslint-disable */
+import webPluginInstall, { webPluginComponents } from 'webPluginComp';
 // 组件属性面板注册
 const files = require.context(
   '../../../../plugins/components/basic',
@@ -6,8 +6,9 @@ const files = require.context(
   /.vue$/,
 );
 
+// web组件列表
 const webComMap = {
-  RCCard: {
+  rcCard: {
     i18nTitle: {
       'en-US': 'test',
       'zh-CN': '测试',
@@ -18,24 +19,8 @@ const webComMap = {
   },
 };
 
-const modules = {};
-files.keys().forEach(item => {
-  console.log(files(item), '1');
-  modules[files(item).default.name] = files(item).default;
-});
-
 // 所有组件列表
-const componentsList = [];
-for (const key in modules) {
-  componentsList.push(modules[key]);
-}
-
-// 定义 install 方法，注册所有组件
-const install = function(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  componentsList.map(c => Vue.component(c.name, c));
-};
+const componentsList = [...webPluginComponents];
 
 const webPluginList = [];
 componentsList.map(c => {
@@ -51,7 +36,4 @@ componentsList.map(c => {
   }
 });
 
-export { webPluginList };
-export default {
-  install,
-};
+export { webPluginList, webPluginInstall };

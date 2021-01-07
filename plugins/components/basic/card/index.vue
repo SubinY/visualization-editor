@@ -1,7 +1,8 @@
 <template>
   <div>
     <a-switch default-checked @change="onChange" />
-
+    {{text}}
+    {{imgSrc}}
     <!-- <el-switch v-model="value" active-color="#13ce66" inactive-color="#ff4949">
     </el-switch> -->
   </div>
@@ -13,17 +14,29 @@
 // import 'ant-design-vue/lib/switch/style';
 import PropTypes from '@luban-h5/plugin-common-props';
 export default {
-  name: 'RCCard',
+  name: 'rcCard',
   components: {
     // elSwitch: Switch
   },
   props: {
-    text: PropTypes.string()
+    text: PropTypes.string(),
+    imgSrc: {
+      type: String,
+      default: '',
+      visible: true,
+      editor: {
+        type: 'test',
+        label: '测试',
+        props: {}
+      },
+    },
   },
   data() {
     return {
-      value: true
+      value: true,
     };
+  },
+  watch: {
   },
   methods: {
     onChange(checked) {

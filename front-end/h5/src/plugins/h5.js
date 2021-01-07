@@ -1,5 +1,4 @@
-// import LbpButton from '@luban-h5/lbc-button'
-import {
+import h5PluginInstall, {
   LbpButton,
   LbpPicture,
   LbpVideo,
@@ -18,7 +17,6 @@ import {
   LbpTable,
   LbpNewsList,
 } from 'h5PluginComp';
-// import LbpTabs from 'core/components/plugins/lbp-tabs'
 
 const h5PluginList = [
   {
@@ -307,14 +305,4 @@ const h5PluginList = [
   },
 ];
 
-// 定义 install 方法，注册所有组件
-const install = function(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  h5PluginList.map(c => Vue.component(c.name, c.component));
-};
-
-export { h5PluginList };
-export default {
-  install,
-};
+export { h5PluginList, h5PluginInstall };

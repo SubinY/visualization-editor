@@ -1,4 +1,3 @@
-
 // import LbpButton from '@luban-h5/lbc-button'
 import LbpButton from './src/lbp-button';
 import LbpPicture from './src/lbp-picture';
@@ -19,6 +18,37 @@ import LbpTable from './src/lbp-table';
 import LbpNewsList from './src/lbp-news-list';
 // import LbpTabs from 'core/components/plugins/lbp-tabs'
 
+const h5PluginComponents = [
+  LbpButton,
+  LbpPicture,
+  LbpVideo,
+  LbpText,
+  LbpFormInput,
+  LbpFormButton,
+  LbpFormRadioGroup,
+  LbpFormCheckboxGroup,
+  LbpBackground,
+  LbpSlide,
+  LbpBgMusic,
+  LbpNoticeBar,
+  LbpRate,
+  LbpQQMap,
+  LbpLineChart,
+  LbpTable,
+  LbpNewsList,
+];
+
+const install = function (Vue, opts = {}) {
+  h5PluginComponents.forEach((component) => {
+    Vue.component(component.name, component);
+  });
+};
+
+/* istanbul ignore if */
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
 export {
   LbpButton,
   LbpPicture,
@@ -37,4 +67,7 @@ export {
   LbpLineChart,
   LbpTable,
   LbpNewsList,
+};
+export default {
+  install,
 };

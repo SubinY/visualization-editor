@@ -2,11 +2,15 @@ import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 import { getVM, getComponentsForPropsEditor } from '@/utils/element'
 import 'core/styles/props-config-panel.scss'
+import Test from '@/components/common/test'
 
 export default {
   data: () => ({
     loadCustomEditorFlag: false
   }),
+  components: {
+    test: Test
+  },
   props: {
     layout: {
       type: String,
@@ -86,10 +90,11 @@ export default {
           [item.type === 'a-switch' ? 'checked' : 'value']: editingElement.pluginProps[propKey]
         },
         on: {
-        // https://vuejs.org/v2/guide/render-function.html#v-model
-        // input (e) {
-        //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
-        // }
+          // https://vuejs.org/v2/guide/render-function.html#v-model
+          // input (e) {
+          //   console.log(propKey, 1)
+          //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+          // },
           change(e) {
             // fixme: update plugin props in vuex with dispatch
             editingElement.pluginProps[propKey] = e.target ? e.target.value : e
@@ -117,7 +122,6 @@ export default {
     renderPropsEditorPanel(h, editingElement) {
       const vm = getVM(editingElement.name)
       const props = vm.$options.props
-
       return (
         <a-form
           ref='form'
