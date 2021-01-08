@@ -2,15 +2,11 @@ import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 import { getVM, getComponentsForPropsEditor } from '@/utils/element'
 import 'core/styles/props-config-panel.scss'
-import Test from '@/components/common/test'
 
 export default {
   data: () => ({
     loadCustomEditorFlag: false
   }),
-  components: {
-    test: Test
-  },
   props: {
     layout: {
       type: String,
@@ -73,6 +69,7 @@ export default {
      */
     renderPropFormItem(h, { propKey, propConfig }) {
       const editingElement = this.editingElement
+      const that = this;
       const item = propConfig.editor
       // https://vuejs.org/v2/guide/render-function.html
       const data = {
@@ -97,7 +94,8 @@ export default {
           // },
           change(e) {
             // fixme: update plugin props in vuex with dispatch
-            editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+            // editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+            that.$set(editingElement.pluginProps, propKey, e.target ? e.target.value : e)
           }
         }
       }

@@ -1,10 +1,15 @@
 <template>
+  <!-- <a-input
+    :value="innerText"
+    @change="
+      (e) => {
+        innerText = e.target.value;
+      }
+    "
+  ></a-input> -->
   <div>
-    <a-switch default-checked @change="onChange" />
-    {{text}}
-    {{imgSrc}}
-    <!-- <el-switch v-model="value" active-color="#13ce66" inactive-color="#ff4949">
-    </el-switch> -->
+    <p>{{ text }}</p>
+    <p>{{ text1 }}</p>
   </div>
 </template>
 
@@ -20,9 +25,10 @@ export default {
   },
   props: {
     text: PropTypes.string(),
-    imgSrc: {
+    // text1: PropTypes.string({ label: '内容', defaultValue: '双击修改文字' }),
+    text1: {
       type: String,
-      default: '',
+      default: 'default',
       visible: true,
       editor: {
         type: 'test',
@@ -36,8 +42,7 @@ export default {
       value: true,
     };
   },
-  watch: {
-  },
+  computed: {},
   methods: {
     onChange(checked) {
       console.log(`a-switch to ${checked}`);

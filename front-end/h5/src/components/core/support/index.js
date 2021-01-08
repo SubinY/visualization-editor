@@ -19,6 +19,7 @@ import VideoGallery from './video-gallery/gallery.js'
 import LbsExcelEditor from './excel'
 import ColorsPanel from './colors-panel'
 import LbpTextAlign from '@luban-h5/lbs-text-align'
+import Test from './test'
 /**
  * #!en import element-ui color picker for bgcolor、color, because a-input(ant-design-vue) component do not support alpha
  * #!zh 引入 element-ui 颜色选择器，因为 ant-design-vue 没有提供颜色选择器，默认的 <a-input type="color" /> 不支持选择透明度
@@ -34,3 +35,5 @@ Vue.component(VideoGallery.name, VideoGallery)
 Vue.component(LbpTextAlign.name, LbpTextAlign)
 Vue.component(LbsExcelEditor.name, LbsExcelEditor)
 Vue.component(ColorsPanel.name, ColorsPanel)
+// 测试属性组件
+Vue.component(Test.name, Test)
